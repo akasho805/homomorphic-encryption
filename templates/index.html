@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homomorphic Addition Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Homomorphic Addition Demo</h1>
+        <form method="POST" action="{{ url_for('process') }}">
+            <div style="display: flex; justify-content: space-between;">
+                <div style="width: 48%;">
+                    <label for="message1">Enter Message 1:</label>
+                    <input type="text" id="message1" name="message1" required>
+                </div>
+                <div style="width: 48%;">
+                    <label for="message2">Enter Message 2:</label>
+                    <input type="text" id="message2" name="message2" required>
+                </div>
+            </div>
+            <button type="submit">Add</button> <!-- Changed text to "Add" -->
+        </form>
+
+        {% if message1 %}
+            <div class="result">
+                <h2>Results:</h2>
+                <p>After encrypting Message 1: {{ C1_a }}, {{ C2_a }}</p>
+                <p>After encrypting Message 2: {{ C1_b }}, {{ C2_b }}</p>
+                <p>Homomorphic Addition: {{ C1_sum }}, {{ C2_sum }}</p>
+                <p>(Decryption) Message 1 (Numeric): {{ decrypted_string1 }}</p>
+                <p>(Decryption) Message 2 (Numeric): {{ decrypted_string2 }}</p>
+                <p>Final Result (Homomorphic Sum): {{ homomorphic_sum }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
